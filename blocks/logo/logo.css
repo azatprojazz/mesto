@@ -1,7 +1,6 @@
 .logo {
   width: 100%;
   max-width: 142px;
-  max-height: 33px;
   transition: 0.5s;
 }
 
@@ -14,9 +13,7 @@
 
 @media screen and (max-width: 584px) {
   .logo {
-    width: 100%;
     max-width: 103.74px;
-    max-height: 24.4px;
     transition: 1s;
   }
 }

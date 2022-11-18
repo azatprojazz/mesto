@@ -1,7 +1,7 @@
 .profile__add-btn {
   display: flex;
   min-width: 150px;
-  min-height: 50px;
+  height: 50px;
   border: 2px solid white;
   border-radius: 2px;
   background-color: black;
@@ -14,7 +14,6 @@
 @media screen and (max-width: 678px) {
   .profile__add-btn {
     min-width: 282px;
-    min-height: 50px;
     background-size: 16px;
   }
 }
