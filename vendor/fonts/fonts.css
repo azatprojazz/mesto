@@ -9,6 +9,15 @@
 
 @font-face {
   font-family: "Inter";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("./Inter-500.woff2") format("woff2"),
+    url("./Inter-500.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
   font-weight: 700;
   font-style: normal;
   font-display: swap;
