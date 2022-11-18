@@ -1,11 +1,7 @@
 .card__info {
   display: flex;
   align-items: center;
-  /* align-content: center; */
   justify-content: space-between;
-  /* min-width: 25px; */
-  /* flex-flow: row; */
-  /* text-align: center; */
   max-width: 262px;
   min-height: 70px;
 }
