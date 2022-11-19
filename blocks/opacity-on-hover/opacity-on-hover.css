@@ -1,11 +1,11 @@
-.link {
+.opacity-on-hover {
   transition: opacity 0.4s;
   text-decoration: none;
   opacity: 1;
   color: white;
 }
 
-.link:hover {
+.opacity-on-hover:hover {
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 0.6;
 }
