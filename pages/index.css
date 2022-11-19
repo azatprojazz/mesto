@@ -3,7 +3,7 @@
 @import url('../vendor/fonts/fonts.css');
 
 /* Mics */
-@import url('../blocks/link/link.css');
+@import url('../blocks/opacity-on-hover/opacity-on-hover.css');
 
 /* Body */
 @import url('../blocks/body/body.css');
@@ -48,6 +48,5 @@
 @import url('../blocks/popup/__close-btn/popup__close-btn.css');
 @import url('../blocks/popup/__title/popup__title.css');
 @import url('../blocks/popup/__form/popup__form.css');
-@import url('../blocks/popup/__input-name/popup__input-name.css');
-@import url('../blocks/popup/__input-descr/popup__input-descr.css');
+@import url('../blocks/popup/__input/popup__input.css');
 @import url('../blocks/popup/__save-btn/popup__save-btn.css');
