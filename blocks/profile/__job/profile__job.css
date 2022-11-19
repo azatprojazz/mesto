@@ -1,5 +1,6 @@
 .profile__job {
   overflow: hidden;
+  grid-column: span 2;
   grid-area: subtitle;
   max-width: 336px;
   margin: 0;
@@ -13,10 +14,9 @@
 
 @media screen and (max-width: 678px) {
   .profile__job {
-    max-width: 180px;
-    margin-bottom: 36px;
-    margin-left: 81px;
-    text-align: center;
+    justify-self: center;
+    max-width: 230px;
+    padding-bottom: 35px;
     font-size: 14px;
     line-height: 14px;
   }

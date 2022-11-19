@@ -2,9 +2,7 @@
   position: relative;
   display: flex;
   flex-flow: column;
-  box-sizing: border-box;
   max-width: 430px;
-  min-height: 330px;
   padding: 34px 36px 37px;
   border-radius: 10px;
   background-color: white;
@@ -14,7 +12,6 @@
 @media screen and (max-width: 568px) {
   .popup__container {
     max-width: 282px;
-    min-height: 322px;
-    padding: 22px 22px 0px;
+    padding: 25px 22px 25px;
   }
 }
