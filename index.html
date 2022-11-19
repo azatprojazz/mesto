@@ -23,7 +23,7 @@
             <button class="profile__edit-btn link" type="button"></button>
             <p class="profile__job">Исследователь родных просторов</p>
           </div>
-          <button class="profile__add-btn link" type="button"></button>
+          <button class="profile__add-btn opacity-on-hover" type="button" aria-label="Добавить картинки"></button>
         </section>
 
         <section class="cards">
@@ -32,42 +32,42 @@
               <img class="card__image" src="./images/place-teriberka.jpg" alt="Териберка">
               <div class="card__info">
                 <h2 class="card__title">Териберка</h2>
-                <button class="card__like card__like_active link" type="button"></button>
+                <button class="card__like opacity-on-hover" type="button"></button>
               </div>
             </li>
             <li class="card">
               <img class="card__image" src="./images/place-ruskeala.jpg" alt="Горный парк Рускеала">
               <div class="card__info">
                 <h2 class="card__title">Рускеала</h2>
-                <button class="card__like card__like_active link" type="button"></button>
+                <button class="card__like opacity-on-hover" type="button"></button>
               </div>
             </li>
             <li class="card">
               <img class="card__image" src="./images/place-elbrus.jpg" alt="Эльбрус">
               <div class="card__info">
                 <h2 class="card__title">Эльбрус</h2>
-                <button class="card__like card__like_active link" type="button"></button>
+                <button class="card__like opacity-on-hover" type="button"></button>
               </div>
             </li>
             <li class="card">
               <img class="card__image" src="./images/place-baykal.jpg" alt="Байкал">
               <div class="card__info">
                 <h2 class="card__title">Байкал</h2>
-                <button class="card__like card__like_active link" type="button"></button>
+                <button class="card__like opacity-on-hover" type="button"></button>
               </div>
             </li>
             <li class="card">
               <img class="card__image" src="./images/place-bashkiriya.jpg" alt="Башкирия">
               <div class="card__info">
                 <h2 class="card__title">Башкирия</h2>
-                <button class="card__like card__like_active link" type="button"></button>
+                <button class="card__like opacity-on-hover" type="button"></button>
               </div>
             </li>
             <li class="card">
               <img class="card__image" src="./images/place-altay.jpg" alt="Алтай">
               <div class="card__info">
                 <h2 class="card__title">Алтай</h2>
-                <button class="card__like card__like_active link" type="button"></button>
+                <button class="card__like opacity-on-hover" type="button"></button>
               </div>
             </li>
           </ul>
@@ -79,17 +79,17 @@
       </footer>
     </div>
 
-    <section class="popup">
+    <div class="popup">
       <div class="popup__container">
-        <button class="popup__close-btn link" type="button"></button>
+        <button class="popup__close-btn opacity-on-hover" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form" name="form">
-          <input class="popup__input-name" type="text" name="name" autocomplete="off" placeholder="Введите имя">
-          <input class="popup__input-descr" type="text" name="job" autocomplete="off" placeholder="Род деятельности">
-          <button class="popup__save-btn link" type="submit">Сохранить</button>
+          <input class="popup__input" type="text" id="input-name" name="name" autocomplete="off" placeholder="Введите имя">
+          <input class="popup__input" type="text" id="input-job" name="job" autocomplete="off" placeholder="Род деятельности">
+          <button class="popup__save-btn opacity-on-hover" type="submit">Сохранить</button>
         </form>
       </div>
-    </section>
+    </div>
 
     <script src="./scripts/index.js"></script>
   </body>
