@@ -1,4 +1,4 @@
-import initialCards from './arrays.js';
+import initialCards from './constants.js';
 
 // Находим все попапы
 const popupProfile = document.querySelector('.popup_type_profile');
@@ -10,8 +10,8 @@ const cardTemplate = document.querySelector('.card-template').content;
 const cardsContainer = document.querySelector('.cards__container');
 
 // Находим формы в DOM
-const formElement = popupProfile.querySelector('.popup__form');
-const formCardElement = popupCards.querySelector('.popup__form');
+const formEditProfile = popupProfile.querySelector('.popup__form');
+const formAddCard = popupCards.querySelector('.popup__form');
 
 // Вытаскиваем элементы из DOM для добавления карточек
 const popupCardsOpenBtn = document.querySelector('.profile__add-btn');
@@ -21,10 +21,10 @@ const popupCaptionElement = popupViewCard.querySelector('.popup__caption');
 // Находим поля формы в DOM
 const nameElement = document.querySelector('.profile__name');
 const jobElement = document.querySelector('.profile__job');
-const nameCardInput = formCardElement.querySelector('.popup__input_content_card-name');
-const linkCardInput = formCardElement.querySelector('.popup__input_content_card-link');
-const nameInput = formElement.querySelector('.popup__input_content_name');
-const jobInput = formElement.querySelector('.popup__input_content_job');
+const nameCardInput = formAddCard.querySelector('.popup__input_content_card-name');
+const linkCardInput = formAddCard.querySelector('.popup__input_content_card-link');
+const nameInput = formEditProfile.querySelector('.popup__input_content_name');
+const jobInput = formEditProfile.querySelector('.popup__input_content_job');
 
 // Находим кнопки
 const popupEditBtnElement = document.querySelector('.profile__edit-btn');
@@ -74,9 +74,9 @@ initialCards.forEach((item) => {
 /**
  * Создаем класс, закрывающий Popup
  */
-function closePopup(evt) {
-  const resultPopup = evt.target.closest('.popup');
-  resultPopup.classList.remove('popup_opened');
+function closePopup(popup) {
+  const popupsClose = popup.target.closest('.popup');
+  popupsClose.classList.remove('popup_opened');
 }
 
 /**
@@ -112,7 +112,7 @@ function submitCardForm(evt) {
   evt.preventDefault();
   const card = createCard(nameCardInput.value, linkCardInput.value);
   prependCard(card);
-  formCardElement.reset();
+  formAddCard.reset();
   closePopup(evt);
 }
 
@@ -124,5 +124,5 @@ popupCardsOpenBtn.addEventListener('click', () => {
 popupCloseBtnElements.forEach((button) => {
   button.addEventListener('click', closePopup);
 });
-formElement.addEventListener('submit', submitProfileForm);
-formCardElement.addEventListener('submit', submitCardForm);
+formEditProfile.addEventListener('submit', submitProfileForm);
+formAddCard.addEventListener('submit', submitCardForm);
