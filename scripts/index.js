@@ -28,7 +28,9 @@ const jobInput = formEditProfile.querySelector('.popup__input_content_job');
 
 // Находим кнопки
 const popupEditBtnElement = document.querySelector('.profile__edit-btn');
-const popupCloseBtnElements = document.querySelectorAll('.popup__close-btn');
+const popupCloseBtnProfile = popupProfile.querySelector('.popup__close-btn');
+const popupCloseBtnCards = popupCards.querySelector('.popup__close-btn');
+const popupCloseBtnViewCard = popupViewCard.querySelector('.popup__close-btn');
 
 function createCard(cardName, cardLink) {
   // Вытащил из темплейта элемент списка
@@ -75,8 +77,7 @@ initialCards.forEach((item) => {
  * Создаем класс, закрывающий Popup
  */
 function closePopup(popup) {
-  const popupsClose = popup.target.closest('.popup');
-  popupsClose.classList.remove('popup_opened');
+  popup.classList.remove('popup_opened');
 }
 
 /**
@@ -105,7 +106,7 @@ function submitProfileForm(evt) {
   // Вставьте новые значения с помощью textContent
   nameElement.textContent = nameInput.value;
   jobElement.textContent = jobInput.value;
-  closePopup(evt);
+  closePopup(popupProfile);
 }
 
 function submitCardForm(evt) {
@@ -113,7 +114,7 @@ function submitCardForm(evt) {
   const card = createCard(nameCardInput.value, linkCardInput.value);
   prependCard(card);
   formAddCard.reset();
-  closePopup(evt);
+  closePopup(popupCards);
 }
 
 // Прикрепляем обработчик к форме: он будет следить за событием “submit” - «отправка»
@@ -121,8 +122,14 @@ popupEditBtnElement.addEventListener('click', openPopupProfile);
 popupCardsOpenBtn.addEventListener('click', () => {
   openPopup(popupCards);
 });
-popupCloseBtnElements.forEach((button) => {
-  button.addEventListener('click', closePopup);
+popupCloseBtnProfile.addEventListener('click', () => {
+  closePopup(popupProfile);
+});
+popupCloseBtnCards.addEventListener('click', () => {
+  closePopup(popupCards);
+});
+popupCloseBtnViewCard.addEventListener('click', () => {
+  closePopup(popupViewCard);
 });
 formEditProfile.addEventListener('submit', submitProfileForm);
 formAddCard.addEventListener('submit', submitCardForm);
