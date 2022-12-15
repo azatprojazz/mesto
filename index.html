@@ -40,10 +40,14 @@
       <div class="popup__container">
         <button class="popup__close-btn opacity-on-hover" type="button" aria-label="Закрыть"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" name="form">
-          <input class="popup__input popup__input_content_name" type="text" name="name" autocomplete="off" required="required" placeholder="Введите имя">
-          <input class="popup__input popup__input_content_job" type="text" name="job" autocomplete="off" required="required" placeholder="Род деятельности">
-          <button class="popup__save-btn opacity-on-hover" type="submit">Сохранить</button>
+        <form class="popup__form" name="form" novalidate>
+          <input class="popup__input popup__input_content_name" type="text" id="user-name" name="name" minlength="2" maxlength="40" autocomplete="off" required="required" placeholder="Введите имя">
+          <span class="popup__error" id="user-name-error"></span>
+          <input class="popup__input popup__input_content_job" type="text" id="about" name="job" minlength="2" maxlength="200" autocomplete="off" required="required" placeholder="Род деятельности">
+          <span class="popup__error" id="about-error"></span>
+          <button class="popup__save-btn opacity-on-hover" type="submit">
+            Сохранить
+          </button>
         </form>
       </div>
     </div>
@@ -52,10 +56,14 @@
       <div class="popup__container">
         <button class="popup__close-btn opacity-on-hover" type="button" aria-label="Закрыть"></button>
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form" name="form">
-          <input class="popup__input popup__input_content_card-name" type="text" name="name" autocomplete="off" required="required" placeholder="Именование картинки">
-          <input class="popup__input popup__input_content_card-link" type="url" name="link" autocomplete="off" required="required" placeholder="Ссылка на картинку">
-          <button class="popup__save-btn opacity-on-hover" type="submit">Создать</button>
+        <form class="popup__form" name="form" novalidate>
+          <input class="popup__input popup__input_content_card-name" type="text" id="name-card" name="name" minlength="2" maxlength="30" autocomplete="off" required="required" placeholder="Именование картинки">
+          <span class="popup__error" id="name-card-error"></span>
+          <input class="popup__input popup__input_content_card-link" type="url" id="link" name="link" autocomplete="off" required="required" placeholder="Ссылка на картинку">
+          <span class="popup__error" id="link-error"></span>
+          <button class="popup__save-btn opacity-on-hover" type="submit">
+            Создать
+          </button>
         </form>
       </div>
     </div>
@@ -80,7 +88,7 @@
     </template>
 
     <script src="./scripts/index.js" type="module"></script>
-
+    <script src="./scripts/validate.js"></script>
   </body>
 
 </html>
