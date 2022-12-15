@@ -42,6 +42,16 @@ const enableValidation = (config) => {
     const inputs = [...form.querySelectorAll(config.inputSelector)]; //в каждой форме нашли все инпуты
     const button = form.querySelector(config.submitButtonSelector);
 
+    // деактивируем кнопку при 1й загрузке сайта
+    toggleButtonInvalid(inputs, button, config);
+
+    form.addEventListener('reset', () => {
+      // `setTimeout` нужен для того, чтобы дождаться очищения формы (вызов уйдет в конце стэка) и только потом вызвать `toggleButtonState`
+      setTimeout(() => {
+        toggleButtonInvalid(inputs, button, config);
+      }, 0); // достаточно указать 0 миллисекунд, чтобы после `reset` уже сработало действие
+    });
+
     inputs.forEach((input) => {
       input.addEventListener('input', () => {
         //на каждый инпут подписались, что когда в нем будут изменения, любой клик
