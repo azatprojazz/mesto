@@ -33,10 +33,6 @@ const jobInput = formEditProfile.querySelector('.popup__input_content_job');
 
 // Находим кнопки
 const popupEditBtnElement = document.querySelector('.profile__edit-btn');
-const popupCloseBtnProfile = popupProfile.querySelector('.popup__close-btn');
-const popupCloseBtnCards = popupCards.querySelector('.popup__close-btn');
-const popupCloseBtnViewCard = popupViewCard.querySelector('.popup__close-btn');
-const popupBtnAddCards = popupCards.querySelector('.popup__save-btn');
 
 // Закрытие попап по кнопке Escape
 const handleKeyUp = (evt) => {
@@ -57,16 +53,16 @@ function createCard(cardName, cardLink) {
   cardImageElement.src = cardLink;
   const likeBtn = cardElement.querySelector('.card__like');
   const deleteBtn = cardElement.querySelector('.card__delete-btn');
-  cardImageElement.addEventListener('mousedown', () => {
+  cardImageElement.addEventListener('click', () => {
     popupImageElement.alt = cardName;
     popupImageElement.src = cardLink;
     popupCaptionElement.textContent = cardName;
     openPopup(popupViewCard);
   });
-  likeBtn.addEventListener('mousedown', (evt) => {
+  likeBtn.addEventListener('click', (evt) => {
     evt.target.classList.toggle('card__like_active');
   });
-  deleteBtn.addEventListener('mousedown', (evt) => {
+  deleteBtn.addEventListener('click', (evt) => {
     evt.target.closest('.card').remove();
     console.log(evt.target);
   });
@@ -115,8 +111,6 @@ function openPopupProfile() {
 
 function openPopupCard() {
   openPopup(popupCards);
-  popupBtnAddCards.classList.add('popup__save-btn_disabled');
-  popupBtnAddCards.disabled = true;
 }
 
 /**
@@ -130,7 +124,6 @@ function submitProfileForm(evt) {
   nameElement.textContent = nameInput.value;
   jobElement.textContent = jobInput.value;
   closePopup(popupProfile);
-  formEditProfile.reset();
 }
 
 function submitCardForm(evt) {
@@ -142,8 +135,8 @@ function submitCardForm(evt) {
 }
 
 // Прикрепляем обработчик к форме: он будет следить за событием “submit” - «отправка»
-popupEditBtnElement.addEventListener('mousedown', openPopupProfile);
-popupCardsOpenBtn.addEventListener('mousedown', openPopupCard);
+popupEditBtnElement.addEventListener('click', openPopupProfile);
+popupCardsOpenBtn.addEventListener('click', openPopupCard);
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
     if (
@@ -154,12 +147,5 @@ popups.forEach((popup) => {
     }
   });
 });
-popupCloseBtnProfile.addEventListener('mousedown', () =>
-  closePopup(popupProfile)
-);
-popupCloseBtnCards.addEventListener('mousedown', () => closePopup(popupCards));
-popupCloseBtnViewCard.addEventListener('mousedown', () =>
-  closePopup(popupViewCard)
-);
 formEditProfile.addEventListener('submit', submitProfileForm);
 formAddCard.addEventListener('submit', submitCardForm);
