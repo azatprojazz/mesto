@@ -1,7 +1,7 @@
 import initialCards from './initialCardsData.js';
-import { Card } from './card.js';
+import { Card } from './Card.js';
 import config from './config.js';
-import FormValidator from './formValidator.js';
+import FormValidator from './FormValidator.js';
 
 // Находим все попапы
 const popups = document.querySelectorAll('.popup');
@@ -39,9 +39,9 @@ const popupEditBtnElement = document.querySelector('.profile__edit-btn');
 // Закрытие попап по кнопке Escape
 const handleKeyUp = (evt) => {
   if (evt.key === 'Escape') {
-    const openModal = document.querySelector('.popup_opened'); //найди мне открытую модалку
+    const openedModal = document.querySelector('.popup_opened'); //найди мне открытую модалку
 
-    closePopup(openModal); //закрой мне эту модалку
+    closePopup(openedModal); //закрой мне эту модалку
   }
 };
 
