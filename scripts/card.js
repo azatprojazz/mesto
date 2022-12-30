@@ -52,6 +52,7 @@ class Card {
 
   _handleRemoveClick() {
     this._element.remove();
+    this._element = null;
   }
 }
 
