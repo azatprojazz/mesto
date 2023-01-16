@@ -1,11 +1,11 @@
-import initialCards from './initialCardsData.js';
-import Card from './Card.js';
-import config from './config.js';
-import FormValidator from './FormValidator.js';
-import Section from './Section.js';
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js';
-import UserInfo from './UserInfo.js';
+import initialCards from '../utils/initialCardsData.js';
+import Card from '../components/Card.js';
+import config from '../utils/config.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
 
 // Вытаскиваем элементы из DOM для добавления карточек
 const popupCardsOpenBtn = document.querySelector('.profile__add-btn');
