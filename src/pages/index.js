@@ -1,3 +1,5 @@
+import './index.css'; // Файл стилей
+
 import initialCards from '../utils/initialCardsData.js';
 import Card from '../components/Card.js';
 import config from '../utils/config.js';
@@ -7,13 +9,9 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 
-// Вытаскиваем элементы из DOM для добавления карточек
 const popupCardsOpenBtn = document.querySelector('.profile__add-btn');
-
 const nameInput = document.querySelector('.popup__input_content_name');
 const jobInput = document.querySelector('.popup__input_content_job');
-
-// Находим кнопки
 const popupEditBtnElement = document.querySelector('.profile__edit-btn');
 
 const popupProfile = new PopupWithForm(
@@ -89,7 +87,6 @@ function submitAddCard(evt, inputValues) {
     name: inputValues.name,
     link: inputValues.link,
   });
-  // console.log(popupCards._getInputValues())
   cardSection.addItem(cardElement);
   popupCards.close();
 }
