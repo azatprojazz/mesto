@@ -1,4 +1,4 @@
-class Card {
+export default class Card {
   constructor(data, templateSelector, handleClickCard) {
     this._name = data.name;
     this._link = data.link;
@@ -55,5 +55,3 @@ class Card {
     this._element = null;
   }
 }
-
-export default Card;
