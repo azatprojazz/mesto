@@ -1,27 +1,34 @@
+const teriberka = new URL('../images/place-teriberka.jpg', import.meta.url);
+const ruskeala = new URL('../images/place-ruskeala.jpg', import.meta.url);
+const elbrus = new URL('../images/place-elbrus.jpg', import.meta.url);
+const baykal = new URL('../images/place-baykal.jpg', import.meta.url);
+const bashkiriya = new URL('../images/place-bashkiriya.jpg', import.meta.url);
+const altay = new URL('../images/place-altay.jpg', import.meta.url);
+
 const initialCards = [
   {
     name: 'Териберка',
-    link: './images/place-teriberka.jpg',
+    link: teriberka,
   },
   {
     name: 'Рускеала',
-    link: './images/place-ruskeala.jpg',
+    link: ruskeala,
   },
   {
     name: 'Эльбрус',
-    link: './images/place-elbrus.jpg',
+    link: elbrus,
   },
   {
     name: 'Байкал',
-    link: './images/place-baykal.jpg',
+    link: baykal,
   },
   {
     name: 'Башкирия',
-    link: './images/place-bashkiriya.jpg',
+    link: bashkiriya,
   },
   {
     name: 'Алтай',
-    link: './images/place-altay.jpg',
+    link: altay,
   },
 ];
 
