@@ -46,6 +46,14 @@ export default class FormValidator {
     }
   }
 
+  _resetValidation() {
+    this._toggleButtonInvalid();
+
+    this._inputs.forEach((input) => {
+      this._hideError(input);
+    });
+  }
+
   enableValidation() {
     this._inputs = [...this._formElement.querySelectorAll(this._inputSelector)]; //в каждой форме нашли все инпуты
     this._button = this._formElement.querySelector(this._submitButtonSelector);
@@ -57,6 +65,7 @@ export default class FormValidator {
       // `setTimeout` нужен для того, чтобы дождаться очищения формы (вызов уйдет в конце стэка) и только потом вызвать `toggleButtonState`
       setTimeout(() => {
         this._toggleButtonInvalid();
+        this._resetValidation();
       }, 0); // достаточно указать 0 миллисекунд, чтобы после `reset` уже сработало действие
     });
 
