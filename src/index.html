@@ -16,11 +16,13 @@
 
       <main class="content">
         <section class="profile" aria-label="Описание профиля">
+          <button class="profile__edit-image">
           <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватарка">
+        </button>
           <div class="profile__info">
-            <h1 class="profile__name">Pro Travel Ru</h1>
+            <h1 class="profile__name"></h1>
             <button class="profile__edit-btn opacity-on-hover" type="button" aria-label="Редактировать профиль"></button>
-            <p class="profile__job">Исследователь родных просторов</p>
+            <p class="profile__job"></p>
           </div>
           <button class="profile__add-btn opacity-on-hover" type="button" aria-label="Добавить картинки"></button>
         </section>
@@ -42,7 +44,7 @@
         <form class="popup__form" name="form" novalidate>
           <input class="popup__input popup__input_content_name" type="text" id="user-name" name="name" minlength="2" maxlength="40" autocomplete="off" required="required" placeholder="Введите имя">
           <span class="popup__error" id="user-name-error"></span>
-          <input class="popup__input popup__input_content_job" type="text" id="about" name="job" minlength="2" maxlength="200" autocomplete="off" required="required" placeholder="Род деятельности">
+          <input class="popup__input popup__input_content_job" type="text" id="about" name="about" minlength="2" maxlength="200" autocomplete="off" required="required" placeholder="Род деятельности">
           <span class="popup__error" id="about-error"></span>
           <button class="popup__save-btn opacity-on-hover" type="submit">
             Сохранить
@@ -75,13 +77,38 @@
       </div>
     </div>
 
+    <div class="popup popup_avatar">
+      <div class="popup__container popup__container-avatar">
+        <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form class="popup__form" name="form-avatar" novalidate>
+          <input class="popup__input" type="url" id="avatar" name="avatar" placeholder="Ссылка на картинку" autocomplete="off" required>
+          <span class="popup__error" id="avatar-error"></span>
+          <button class="popup__save-btn" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_remove">
+      <div class="popup__container popup__container-remove">
+        <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
+        <h2 class="popup__title popup__title-remove">Вы уверены?</h2>
+        <form class="popup__form">
+          <button class="popup__save-btn popup__confirm-btn" type="submit">Да</button>
+        </form>
+      </div>
+    </div>
+
     <template class="card-template">
       <li class="card">
         <button class="card__delete-btn opacity-on-hover" type="button" aria-label="Удалить"></button>
         <img class="card__image">
         <div class="card__info">
           <h2 class="card__title"></h2>
-          <button class="card__like opacity-on-hover" type="button" aria-label="Лайк"></button>
+          <div class="card__like-container">
+            <button class="card__like opacity-on-hover" type="button" aria-label="Лайк"></button>
+            <span class="card__like-count"></span>
+          </div>
         </div>
       </li>
     </template>

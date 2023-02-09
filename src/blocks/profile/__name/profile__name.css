@@ -11,9 +11,14 @@
   line-height: 1.14;
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 678px) {
   .profile__name {
     justify-self: self-end;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .profile__name {
     max-width: 190px;
     padding-left: 20px;
     transition: 0.2s;

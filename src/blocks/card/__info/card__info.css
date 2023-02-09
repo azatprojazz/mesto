@@ -5,9 +5,3 @@
   padding: 24px 20px 26px 21px;
   background-color: white;
 }
-
-@media screen and (max-width: 568px) {
-  .card__info {
-    padding: 26px 20px 24px 21px;
-  }
-}

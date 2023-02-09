@@ -11,6 +11,7 @@
 
 @media screen and (max-width: 678px) {
   .profile__info {
+    justify-content: center;
     margin-right: 0;
   }
 }
