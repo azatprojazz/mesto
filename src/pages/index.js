@@ -11,8 +11,6 @@ import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 import { api } from '../components/Api.js';
 
 const popupCardsOpenBtn = document.querySelector('.profile__add-btn');
-const nameInput = document.querySelector('.popup__input_content_name');
-const jobInput = document.querySelector('.popup__input_content_job');
 const popupEditBtnElement = document.querySelector('.profile__edit-btn');
 const popupAvatarOpenBtn = document.querySelector('.profile__edit-image');
 
@@ -85,10 +83,15 @@ function handleClickCard(name, link) {
 }
 
 function handleDeleteCard(card) {
-  api.deleteCard(card._id).then(() => {
-    card.handleRemoveClick();
-    popupConfirm.close();
-  });
+  api
+    .deleteCard(card._id)
+    .then(() => {
+      card.handleRemoveClick();
+      popupConfirm.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 function openPopupConfirm(card) {
@@ -97,19 +100,22 @@ function openPopupConfirm(card) {
 
 function handleLikeClick(card) {
   const method = card._isLike ? 'DELETE' : 'PUT';
-  api.addLikeCard(card._id, method).then((res) => {
-    card.changeLike();
-    card.changeLikesCount(res.likes.length);
-  });
+  api
+    .addLikeCard(card._id, method)
+    .then((res) => {
+      card.changeLike();
+      card.changeLikesCount(res.likes.length);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 /**
  * Создаем класс, добавляющий Popup, и получаем значение полей jobInput и nameInput из свойства value
  */
 function openPopupProfile() {
-  const userData = userInfo.getUserInfo();
-  nameInput.value = userData.name;
-  jobInput.value = userData.job;
+  popupProfile.setInputValues(userInfo.getUserInfo());
   popupProfile.open();
 }
 
