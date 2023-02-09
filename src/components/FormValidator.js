@@ -9,11 +9,7 @@ export default class FormValidator {
   }
 
   _checkInputValidity(input) {
-    this._error = document.querySelector(`#${input.id}-error`); //мы находим объект ошибки, который связан с этим инпутом, чтобы писать в него, или очищать из него ошибку
-
     if (input.validity.valid) {
-      //и проверяем, если текущий инпут валиден
-      //убрать ошибку
       this._hideError(input);
     } else {
       this._showError(input);
@@ -21,12 +17,14 @@ export default class FormValidator {
   }
 
   _hideError(input) {
+    this._error = document.querySelector(`#${input.id}-error`); //мы находим объект ошибки, который связан с этим инпутом, чтобы писать в него, или очищать из него ошибку
     this._error.textContent = ''; //значит ошибка не нужна, нужно просто очистить
     this._error.classList.remove(this._errorClass);
     input.classList.remove(this._inputErrorClass);
   }
 
   _showError(input) {
+    this._error = document.querySelector(`#${input.id}-error`);
     // и проверяем, если текущий инпут валиден
     // убрать ошибку
     this._error.textContent = input.validationMessage; //если не валиден, значит ошибку нужно показать
@@ -48,7 +46,6 @@ export default class FormValidator {
 
   _resetValidation() {
     this._toggleButtonInvalid();
-
     this._inputs.forEach((input) => {
       this._hideError(input);
     });
@@ -64,7 +61,7 @@ export default class FormValidator {
     this._formElement.addEventListener('reset', () => {
       // `setTimeout` нужен для того, чтобы дождаться очищения формы (вызов уйдет в конце стэка) и только потом вызвать `toggleButtonState`
       setTimeout(() => {
-        this._toggleButtonInvalid();
+        // this._toggleButtonInvalid();
         this._resetValidation();
       }, 0); // достаточно указать 0 миллисекунд, чтобы после `reset` уже сработало действие
     });
