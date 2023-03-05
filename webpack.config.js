@@ -1,11 +1,7 @@
 const path = require('path'); // подключаем path к конфигу вебпак
-const HtmlWebpackPlugin = require('html-webpack-plugin'); // подключите плагин
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-// подключите к проекту mini-css-extract-plugin
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// подключите плагины в файл
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: { main: './src/pages/index.js' },
