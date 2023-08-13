@@ -1,4 +1,7 @@
 export default class FormValidator {
+  // Конструктор класса FormValidator принимает следующие аргументы:
+  // config: объект с конфигурацией для валидации формы
+  // form: элемент формы, который будет проверяться
   constructor(config, form) {
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
@@ -8,6 +11,7 @@ export default class FormValidator {
     this._formElement = form;
   }
 
+  // Проверяет валидность текущего инпута и показывает/скрывает ошибку
   _checkInputValidity(input) {
     if (input.validity.valid) {
       this._hideError(input);
@@ -16,24 +20,25 @@ export default class FormValidator {
     }
   }
 
+  // Скрывает ошибку для заданного инпута
   _hideError(input) {
-    this._error = document.querySelector(`#${input.id}-error`); //мы находим объект ошибки, который связан с этим инпутом, чтобы писать в него, или очищать из него ошибку
-    this._error.textContent = ''; //значит ошибка не нужна, нужно просто очистить
+    this._error = document.querySelector(`#${input.id}-error`);
+    this._error.textContent = '';
     this._error.classList.remove(this._errorClass);
     input.classList.remove(this._inputErrorClass);
   }
 
+  // Показывает ошибку для заданного инпута
   _showError(input) {
     this._error = document.querySelector(`#${input.id}-error`);
-    // и проверяем, если текущий инпут валиден
-    // убрать ошибку
-    this._error.textContent = input.validationMessage; //если не валиден, значит ошибку нужно показать
+    this._error.textContent = input.validationMessage;
     this._error.classList.add(this._errorClass);
     input.classList.add(this._inputErrorClass);
   }
 
+  // Активирует или деактивирует кнопку отправки формы в зависимости от валидности формы
   _toggleButtonInvalid() {
-    const isFormValid = this._inputs.every((input) => input.validity.valid); //если инпут валиден на каждой итерации внутри массива, то тогда вся конструкция вернет true, и переменная будет true. Если хотя бы один из инпутов, одна из итераций вернет мне false, input.validity.valid, то тогда вся конструкция inputs.every будет false
+    const isFormValid = this._inputs.every((input) => input.validity.valid);
 
     if (isFormValid) {
       this._button.classList.remove(this._inactiveButtonClass);
@@ -44,6 +49,7 @@ export default class FormValidator {
     }
   }
 
+  // Сбрасывает валидацию формы
   _resetValidation() {
     this._toggleButtonInvalid();
     this._inputs.forEach((input) => {
@@ -51,29 +57,22 @@ export default class FormValidator {
     });
   }
 
+  // Включает валидацию формы и добавляет обработчики событий
   enableValidation() {
-    this._inputs = [...this._formElement.querySelectorAll(this._inputSelector)]; //в каждой форме нашли все инпуты
+    this._inputs = [...this._formElement.querySelectorAll(this._inputSelector)];
     this._button = this._formElement.querySelector(this._submitButtonSelector);
 
-    // деактивируем кнопку при 1й загрузке сайта
     this._toggleButtonInvalid();
 
     this._formElement.addEventListener('reset', () => {
-      // `setTimeout` нужен для того, чтобы дождаться очищения формы (вызов уйдет в конце стэка) и только потом вызвать `toggleButtonState`
       setTimeout(() => {
-        // this._toggleButtonInvalid();
         this._resetValidation();
-      }, 0); // достаточно указать 0 миллисекунд, чтобы после `reset` уже сработало действие
+      }, 0);
     });
 
     this._inputs.forEach((input) => {
       input.addEventListener('input', () => {
-        //на каждый инпут подписались, что когда в нем будут изменения, любой клик
-
-        // 1. показать ошибку
         this._checkInputValidity(input);
-
-        // 2. задизайблить кнопку
         this._toggleButtonInvalid();
       });
     });
