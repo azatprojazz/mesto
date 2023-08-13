@@ -1,19 +1,22 @@
-import './index.css'; // Файл стилей
-
+// Файл стилей
+import './index.css';
+// Компоненты
 import Card from '../components/Card.js';
-import config from '../utils/config.js';
 import FormValidator from '../components/FormValidator.js';
-import Section from '../components/Section.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import UserInfo from '../components/UserInfo.js';
 import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import Section from '../components/Section.js';
+import UserInfo from '../components/UserInfo.js';
+// Утилиты
+import config from '../utils/config.js';
 import { api } from '../components/Api.js';
-
+// Константы кнопок
 const popupCardsOpenBtn = document.querySelector('.profile__add-btn');
 const popupEditBtnElement = document.querySelector('.profile__edit-btn');
 const popupAvatarOpenBtn = document.querySelector('.profile__edit-image');
 
+// Получаем информацию о пользователе и начальные карточки
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then((res) => {
     userInfo.setUserInfo(res[0]);
@@ -23,10 +26,8 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     console.log(err);
   });
 
-const popupProfile = new PopupWithForm(
-  '.popup_type_profile',
-  submitProfileForm
-);
+// Создаем экземпляры попапов и устанавливаем слушатели событий
+const popupProfile = new PopupWithForm('.popup_type_profile', submitProfileForm);
 popupProfile.setEventListeners();
 
 const popupCards = new PopupWithForm('.popup_type_cards', submitAddCard);
@@ -35,15 +36,13 @@ popupCards.setEventListeners();
 const popupViewCard = new PopupWithImage('.popup_type_view-card');
 popupViewCard.setEventListeners();
 
-const popupConfirm = new PopupWithConfirmation(
-  '.popup_remove',
-  handleDeleteCard
-);
+const popupConfirm = new PopupWithConfirmation('.popup_remove', handleDeleteCard);
 popupConfirm.setEventListeners();
 
 const popupAvatar = new PopupWithForm('.popup_avatar', submitAvatarForm);
 popupAvatar.setEventListeners();
 
+// Функция создания карточки
 const createCard = (item) => {
   const userId = userInfo.getId();
   const card = new Card(
@@ -52,13 +51,14 @@ const createCard = (item) => {
     userId,
     handleClickCard,
     openPopupConfirm,
-    handleLikeClick
+    handleLikeClick,
   );
   const cardElement = card.generateCard();
 
   return cardElement;
 };
 
+// Создаем экземпляр класса Section для управления карточками
 const cardSection = new Section(
   {
     renderer: (item) => {
@@ -66,18 +66,17 @@ const cardSection = new Section(
       cardSection.addItem(cardElement);
     },
   },
-  '.cards__container'
+  '.cards__container',
 );
 
+// Создаем экземпляр класса UserInfo для управления информацией о пользователе
 const userInfo = new UserInfo({
   nameSelector: '.profile__name',
   jobSelector: '.profile__job',
   avatarSelector: '.profile__avatar',
 });
 
-/**
- * Открываем попапы
- */
+// Функции для открытия попапов и обработки действий с карточками
 function handleClickCard(name, link) {
   popupViewCard.open(name, link);
 }
@@ -111,9 +110,7 @@ function handleLikeClick(card) {
     });
 }
 
-/**
- * Создаем класс, добавляющий Popup, и получаем значение полей jobInput и nameInput из свойства value
- */
+// Функции для открытия попапов и отправки форм
 function openPopupProfile() {
   popupProfile.setInputValues(userInfo.getUserInfo());
   popupProfile.open();
@@ -142,11 +139,7 @@ function submitAvatarForm(avatar) {
     });
 }
 
-/**
- * Обработчик «отправки» формы, хотя пока она никуда отправляться не будет, так мы можем определить свою логику отправки.
- */
 function submitProfileForm(inputValues) {
-  // Эта строчка отменяет стандартную отправку формы.
   api
     .editUserInfo(inputValues)
     .then((inputValues) => {
@@ -177,12 +170,13 @@ function submitAddCard(inputValues) {
     });
 }
 
-// Прикрепляем обработчик к форме: он будет следить за событием “submit” - «отправка»
+// Назначаем обработчики событий для кнопок открытия попапов
 popupEditBtnElement.addEventListener('click', openPopupProfile);
 popupCardsOpenBtn.addEventListener('click', openPopupCard);
 popupAvatarOpenBtn.addEventListener('click', openAvatar);
 
-const forms = document.querySelectorAll(config.formSelector); //находим все формы на странице
+// Находим все формы на странице и активируем валидацию для каждой из них
+const forms = document.querySelectorAll(config.formSelector);
 forms.forEach((form) => {
   const formValidator = new FormValidator(config, form);
   formValidator.enableValidation();
