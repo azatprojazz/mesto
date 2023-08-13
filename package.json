@@ -4,7 +4,7 @@
   "description": "* Соц-сеть, с множеством фотографий, семантики, наименованием классов по БЭМ, с файловой структурой по БЭМ nested, адаптированный под несколько устройств* * [Ссылка на проект](https://azatprojazz.github.io/mesto/)",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "webpack --mode=production",
     "dev": "webpack serve",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"

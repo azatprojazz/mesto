@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="ru">
-
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
   </head>
 
   <body class="body">
     <div class="page">
       <header class="header">
-        <img class="logo" src="<%=require('./images/header-logo.svg')%>" alt="Логотип Россия">
+        <img class="logo" src="<%=require('./images/header-logo.svg')%>" alt="Логотип Россия" />
       </header>
 
       <main class="content">
         <section class="profile" aria-label="Описание профиля">
           <button class="profile__edit-image">
-            <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватарка">
+            <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватарка" />
           </button>
           <div class="profile__info">
             <h1 class="profile__name"></h1>
-            <button class="profile__edit-btn opacity-on-hover" type="button" aria-label="Редактировать профиль"></button>
+            <button
+              class="profile__edit-btn opacity-on-hover"
+              type="button"
+              aria-label="Редактировать профиль"
+            ></button>
             <p class="profile__job"></p>
           </div>
-          <button class="profile__add-btn opacity-on-hover" type="button" aria-label="Добавить картинки"></button>
+          <button
+            class="profile__add-btn opacity-on-hover"
+            type="button"
+            aria-label="Добавить картинки"
+          ></button>
         </section>
 
         <section class="cards" aria-label="Список карточек">
@@ -39,40 +46,86 @@
 
     <div class="popup popup_type_profile">
       <div class="popup__container">
-        <button class="popup__close-btn opacity-on-hover" type="button" aria-label="Закрыть"></button>
+        <button
+          class="popup__close-btn opacity-on-hover"
+          type="button"
+          aria-label="Закрыть"
+        ></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form" name="form" novalidate>
-          <input class="popup__input popup__input_content_name" type="text" id="user-name" name="name" minlength="2" maxlength="40" autocomplete="off" required="required" placeholder="Введите имя">
+          <input
+            class="popup__input popup__input_content_name"
+            type="text"
+            id="user-name"
+            name="name"
+            minlength="2"
+            maxlength="40"
+            autocomplete="off"
+            required="required"
+            placeholder="Введите имя"
+          />
           <span class="popup__error" id="user-name-error"></span>
-          <input class="popup__input popup__input_content_job" type="text" id="about" name="about" minlength="2" maxlength="200" autocomplete="off" required="required" placeholder="Род деятельности">
+          <input
+            class="popup__input popup__input_content_job"
+            type="text"
+            id="about"
+            name="about"
+            minlength="2"
+            maxlength="200"
+            autocomplete="off"
+            required="required"
+            placeholder="Род деятельности"
+          />
           <span class="popup__error" id="about-error"></span>
-          <button class="popup__save-btn opacity-on-hover" type="submit">
-            Сохранить
-          </button>
+          <button class="popup__save-btn opacity-on-hover" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
 
     <div class="popup popup_type_cards">
       <div class="popup__container">
-        <button class="popup__close-btn opacity-on-hover" type="button" aria-label="Закрыть"></button>
+        <button
+          class="popup__close-btn opacity-on-hover"
+          type="button"
+          aria-label="Закрыть"
+        ></button>
         <h2 class="popup__title">Новое место</h2>
         <form class="popup__form" name="form" novalidate>
-          <input class="popup__input popup__input_content_card-name" type="text" id="name-card" name="name" minlength="2" maxlength="30" autocomplete="off" required="required" placeholder="Именование картинки">
+          <input
+            class="popup__input popup__input_content_card-name"
+            type="text"
+            id="name-card"
+            name="name"
+            minlength="2"
+            maxlength="30"
+            autocomplete="off"
+            required="required"
+            placeholder="Именование картинки"
+          />
           <span class="popup__error" id="name-card-error"></span>
-          <input class="popup__input popup__input_content_card-link" type="url" id="link" name="link" autocomplete="off" required="required" placeholder="Ссылка на картинку">
+          <input
+            class="popup__input popup__input_content_card-link"
+            type="url"
+            id="link"
+            name="link"
+            autocomplete="off"
+            required="required"
+            placeholder="Ссылка на картинку"
+          />
           <span class="popup__error" id="link-error"></span>
-          <button class="popup__save-btn opacity-on-hover" type="submit">
-            Создать
-          </button>
+          <button class="popup__save-btn opacity-on-hover" type="submit">Создать</button>
         </form>
       </div>
     </div>
 
     <div class="popup popup_type_view-card">
       <div class="popup__view-container">
-        <button class="popup__close-btn opacity-on-hover" type="button" aria-label="Закрыть"></button>
-        <img class="popup__image" src="#" alt="#">
+        <button
+          class="popup__close-btn opacity-on-hover"
+          type="button"
+          aria-label="Закрыть"
+        ></button>
+        <img class="popup__image" src="#" alt="#" />
         <p class="popup__caption"></p>
       </div>
     </div>
@@ -82,7 +135,15 @@
         <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
         <h2 class="popup__title">Обновить аватар</h2>
         <form class="popup__form" name="form-avatar" novalidate>
-          <input class="popup__input" type="url" id="avatar" name="avatar" placeholder="Ссылка на картинку" autocomplete="off" required>
+          <input
+            class="popup__input"
+            type="url"
+            id="avatar"
+            name="avatar"
+            placeholder="Ссылка на картинку"
+            autocomplete="off"
+            required
+          />
           <span class="popup__error" id="avatar-error"></span>
           <button class="popup__save-btn" type="submit">Сохранить</button>
         </form>
@@ -101,8 +162,12 @@
 
     <template class="card-template">
       <li class="card">
-        <button class="card__delete-btn opacity-on-hover" type="button" aria-label="Удалить"></button>
-        <img class="card__image">
+        <button
+          class="card__delete-btn opacity-on-hover"
+          type="button"
+          aria-label="Удалить"
+        ></button>
+        <img class="card__image" />
         <div class="card__info">
           <h2 class="card__title"></h2>
           <div class="card__like-container">
@@ -112,7 +177,5 @@
         </div>
       </li>
     </template>
-
   </body>
-
 </html>
