@@ -1,6 +1,9 @@
 import Popup from './Popup.js';
 
 export default class PopupWithConfirmation extends Popup {
+  // Конструктор класса PopupWithConfirmation принимает следующие аргументы:
+  // selectorPopup: селектор всплывающего окна
+  // submitForm: функция-обработчик отправки формы подтверждения
   constructor(selectorPopup, submitForm) {
     super(selectorPopup);
     this._submitForm = submitForm;
@@ -9,6 +12,7 @@ export default class PopupWithConfirmation extends Popup {
     this._currentCard = null;
   }
 
+  // Устанавливает обработчики событий для формы подтверждения и наследует обработчики событий базового класса
   setEventListeners() {
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
@@ -17,6 +21,7 @@ export default class PopupWithConfirmation extends Popup {
     super.setEventListeners();
   }
 
+  // Открывает всплывающее окно с подтверждением и сохраняет ссылку на текущую карточку
   open(card) {
     this._currentCard = card;
     super.open();
