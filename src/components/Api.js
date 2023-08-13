@@ -4,81 +4,71 @@ class Api {
     this._headers = options.headers;
   }
 
+  // Обрабатывает ответ от сервера
+  // Если ответ успешный (с кодом статуса 200-299), преобразует его в JSON
+  // В противном случае возвращает отклоненный промис с сообщением об ошибке
   _response(res) {
     return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
   }
 
+  // Выполняет запрос к серверу
+  // Принимает три аргумента:
+  // 1. endpoint: строка, содержащая конечную точку (путь) API
+  // 2. method: строка, содержащая HTTP-метод (например, 'GET', 'POST', 'PATCH', 'DELETE'), по умолчанию 'GET'
+  // 3. body: объект с данными, которые будут отправлены в теле запроса (если это применимо, например, для 'POST' и 'PATCH' запросов)
+  _request(endpoint, method = 'GET', body = null) {
+    const options = {
+      method,
+      headers: this._headers,
+    };
+
+    if (body) {
+      options.body = JSON.stringify(body);
+    }
+
+    return fetch(`${this._baseUrl}${endpoint}`, options).then((res) => {
+      return this._response(res);
+    });
+  }
+
+  // Получает информацию о пользователе
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers,
-    }).then((res) => {
-      return this._response(res);
-    });
+    return this._request('/users/me');
   }
 
+  // Редактирует информацию о пользователе
   editUserInfo(inputValues) {
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: 'PATCH',
-      headers: this._headers,
-      body: JSON.stringify(inputValues),
-    }).then((res) => {
-      return this._response(res);
-    });
+    return this._request('/users/me', 'PATCH', inputValues);
   }
 
+  // Получает начальные карточки
   getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers,
-    }).then((res) => {
-      return this._response(res);
-    });
+    return this._request('/cards');
   }
 
+  // Добавляет новую карточку
   addNewCard(inputValues) {
-    return fetch(`${this._baseUrl}/cards`, {
-      method: 'POST',
-      headers: this._headers,
-      body: JSON.stringify(inputValues),
-    }).then((res) => {
-      return this._response(res);
-    });
+    return this._request('/cards', 'POST', inputValues);
   }
 
+  // Устанавливает новый аватар
   setNewAvatar(avatar) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
-      method: 'PATCH',
-      headers: this._headers,
-      body: JSON.stringify(avatar),
-    }).then((res) => {
-      return this._response(res);
-    });
+    return this._request('/users/me/avatar', 'PATCH', avatar);
   }
 
+  // Удаляет карточку
   deleteCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}`, {
-      method: 'DELETE',
-      headers: this._headers,
-    }).then((res) => {
-      return this._response(res);
-    });
+    return this._request(`/cards/${cardId}`, 'DELETE');
   }
 
-  addLikeCard(cardId, method) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: method,
-      headers: this._headers,
-    }).then((res) => {
-      return this._response(res);
-    });
+  // Добавляет лайк карточке
+  addLikeCard(cardId) {
+    return this._request(`/cards/${cardId}/likes`, 'PUT');
   }
 
+  // Удаляет лайк с карточки
   deleteLikeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: 'DELETE',
-      headers: this._headers,
-    }).then((res) => {
-      return this._response(res);
-    });
+    return this._request(`/cards/${cardId}/likes`, 'DELETE');
   }
 }
 
